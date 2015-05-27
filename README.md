@@ -1,29 +1,16 @@
-# docker-lamp-base
-A basic LAMP image for dependant images such as [dell/wordpress](https://github.com/dell-cloud-marketplace/docker-wordpress).
-
-This blueprint installs a basic [LAMP](http://en.wikipedia.org/wiki/LAMP_\(software_bundle\))
- stack - a popular combination of open source software components, used to build dynamic web sites.
-
-## Components
-The stack comprises the following components:
-
-Name       | Version    | Description
------------|------------|------------------------------
-Ubuntu     | Trusty     | Operating system
-MySQL      | 5.5        | Database
-Apache     | 2.4.7      | Web server
-PHP        | 5.5.9     | Scripting language
+# magento mysql docker
+A basic  image for docker magento mysql images such as [jackie/magento-mysql]
 
 ## Usage
 
 ### Basic Example
-Start your image binding host port 8080 to port 80 (Apache Web Server/HTTP), 443 to 443 (Apache Web Server/HTTPS) and 3306 to 3306 (MYSQL) in your container:
+Git clone and cd into it
 
-    sudo docker run -d -p 8080:80 -p 3306:3306 -p 443:443 dell/lamp-base
+docker build -t=jackie/docker-magento-mysql .
 
-Test your deployment:
+Start your image binding host port 8080 to port 80 (Apache Web Server/HTTP) and 3306 to 3306 (MYSQL) in your container:
 
-    curl http://localhost:8080/
+    sudo docker run -d -p 80 -p 3306 jackie/docker-magento-mysql 
 
 ## Administration
 
@@ -53,21 +40,3 @@ You can now test your deployment:
      mysql -u admin -p47nnf4FweaKu -h127.0.0.1 -P3306
 
 
-### Connecting to MySQL from the Application
-The bundled MySQL server has a `root` user with no password for local connections. Simply connect from your
-PHP code with this user:
-
-
-    <?php
-    $mysql = new mysqli("localhost", "root");
-    echo "MySQL Server info: ".$mysql->host_info;
-    ?>
-
-
-## Reference
-
-### Image Details
-
-Based on  [tutum/lamp](https://github.com/tutumcloud/tutum-docker-lamp)
-
-Pre-built Image   | [https://registry.hub.docker.com/u/dell/lamp-base](https://registry.hub.docker.com/u/dell/lamp-base) 
