@@ -8,8 +8,8 @@ Git clone and cd into it
 
 Please copy magento files and magento-sample-data-1.9.0.0 into this dir.
 
--magento/
--magento-sample-data-1.9.0.0/magento_sample_data_for_1.9.0.0.sql
+- magento/
+- magento-sample-data-1.9.0.0/magento_sample_data_for_1.9.0.0.sql
 
 ```no-highlight
 docker build -t=jackie/docker-magento-mysql .
