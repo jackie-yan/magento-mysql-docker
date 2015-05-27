@@ -1,4 +1,4 @@
-magento mysql docker
+#magento mysql docker
 
 A basic image for docker+magento +mysql with sample data images such as [jackie/magento-mysql]
 Usage
@@ -6,10 +6,10 @@ Basic Example
 
 Git clone and cd into it
 
-Please copy magento file and magento-sample-data-1.9.0.0 into this dir.
-eg:
---magento
---magento-sample-data-1.9.0.0/magento_sample_data_for_1.9.0.0.sql
+Please copy magento files and magento-sample-data-1.9.0.0 into this dir.
+
+magento/
+magento-sample-data-1.9.0.0/magento_sample_data_for_1.9.0.0.sql
 
 docker build -t=jackie/docker-magento-mysql .
 
@@ -22,7 +22,7 @@ Get IP address by docker inspect <container_id>
 Browse:IP address. eg: http://172.17.1.24
 
 
-Configuration
+#Configuration
 
 Complete the required information:
 
@@ -33,7 +33,7 @@ Complete the required information:
     User Password: the magento user password read from the logs (eg:ooVoh7aedael)
     Tables Prefix: (optional)
 
-Connecting to MySQL
+#Connecting to MySQL
 
 The first time that you run your container, a new user admin with all privileges will be created in MySQL with a random password, a new user magento with sample data will also be created in MySQL with a random password. To get the password, check the logs of the container.
 
@@ -47,10 +47,8 @@ You can now connect to this MySQL Server using:
     mysql -u admin -p47nnf4FweaKu -h<host> -P<port>
 
 Please remember to change the above password as soon as possible!
+
 MySQL user 'root' has no password but only allows local connections
-========================================================================
-=> Waiting for confirmation of MySQL service startup
-========================================================================
 
 MySQL magento user password: ooVoh7aedael
 
