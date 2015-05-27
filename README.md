@@ -69,4 +69,14 @@ You can now test your deployment:
 
  mysql -u admin -p47nnf4FweaKu -h127.0.0.1 -P32815
 
+## Reference
+
+### Image Details
+
+Inspired by https://github.com/dell-cloud-marketplace/docker-magento
+
+Inspired by https://github.com/dell-cloud-marketplace/docker-lamp-base
+
+Inspired by https://github.com/vasansr/docker-ubuntu-magento-sample
+
 
