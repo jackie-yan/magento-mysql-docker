@@ -1,5 +1,5 @@
 FROM ubuntu:trusty
-MAINTAINER Dell Cloud Market Place <Cloud_Marketplace@dell.com>
+MAINTAINER Jackie <jyan@netstarter.com>
 
 # Install packages
 RUN apt-get update 
@@ -54,7 +54,7 @@ RUN service apache2 restart
 
 # Add volumes for MySQL and the application.
 VOLUME ["/var/lib/mysql", "/var/www/html"]
-ADD initialize.sh /initialize.sh
+RUN chmod 777  /magento_sample_data_for_1.9.0.0.sql
 
 EXPOSE 80 3306
 

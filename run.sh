@@ -1,6 +1,7 @@
 #!/bin/bash
 
 VOLUME_HOME="/var/lib/mysql"
+SAMPLE_DATA_FILE="/magento_sample_data_for_1.9.0.0.sql"
 
 sed -ri -e "s/^upload_max_filesize.*/upload_max_filesize = ${PHP_UPLOAD_MAX_FILESIZE}/" \
     -e "s/^post_max_size.*/post_max_size = ${PHP_POST_MAX_SIZE}/" /etc/php5/apache2/php.ini
@@ -43,7 +44,15 @@ if [[ ! -d $VOLUME_HOME/magento ]]; then
          GRANT ALL PRIVILEGES ON magento.* TO 'magento'@'localhost' \
          IDENTIFIED BY '$MAGENTO_PASSWORD'; \
          FLUSH PRIVILEGES;"
-
+    echo "Initializing the database with sample data"
+    mysql -uroot -e \
+         "use magento; \
+          source /magento_sample_data_for_1.9.0.0.sql;"
+	if [ $? -ne 0 ] ; then
+		echo >&2 "Couldn't initialize the DB. Ensure proper permissions have been given"
+		exit 1
+	fi
+    echo "database with sample data completed"
     mysqladmin -uroot shutdown
     sleep 5
 fi
